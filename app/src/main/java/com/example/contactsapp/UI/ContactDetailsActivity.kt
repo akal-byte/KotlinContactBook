@@ -1,12 +1,12 @@
-package com.example.contactsapp
+package com.example.contactsapp.UI
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import com.example.contactsapp.R
 import com.squareup.picasso.Picasso
 
 class ContactDetailsActivity : AppCompatActivity() {

@@ -1,9 +1,12 @@
-package com.example.contactsapp
+package com.example.contactsapp.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.contactsapp.Models.Contacts
+import com.example.contactsapp.ContactsAdapter
+import com.example.contactsapp.R
 
 class MainActivity : AppCompatActivity() {
     lateinit var rvcontacts:RecyclerView
@@ -21,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             Contacts("Patricia Musikali","07345687778","musikali980@gmail.com","https://cdn.pixabay.com/photo/2017/07/31/21/04/people-2561053__340.jpg")
         )
 rvcontacts=findViewById(R.id.rvcontacts)
-    var contactsAdapter=ContactsAdapter(contactsList,baseContext)
+    var contactsAdapter= ContactsAdapter(contactsList,baseContext)
     rvcontacts.apply {
         layoutManager=LinearLayoutManager(baseContext)
         rvcontacts.adapter=contactsAdapter

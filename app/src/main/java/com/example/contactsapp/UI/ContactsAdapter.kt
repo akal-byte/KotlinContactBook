@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.contactsapp.Models.Contacts
+import com.example.contactsapp.UI.ContactDetailsActivity
 import com.squareup.picasso.Picasso
 
-class ContactsAdapter( var contactsList:List<Contacts>,var context:Context):RecyclerView.Adapter <ContactsViewHolder>(){
+class ContactsAdapter(var contactsList:List<Contacts>, var context:Context):RecyclerView.Adapter <ContactsViewHolder>(){
      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactsViewHolder {
           var itemView=LayoutInflater.from(parent.context).inflate(R.layout.contacts_item_list,parent,false)
           return ContactsViewHolder(itemView)
@@ -24,7 +25,7 @@ class ContactsAdapter( var contactsList:List<Contacts>,var context:Context):Recy
           holder.tvphone.text=contacts.phoneNumber
           holder.tvemail.text=contacts.email
           holder.cvcontact.setOnClickListener {
-               var intent=Intent(context,ContactDetailsActivity::class.java)
+               var intent=Intent(context, ContactDetailsActivity::class.java)
                intent.putExtra("name",contacts.name)
                intent.putExtra("phone",contacts.phoneNumber)
                intent.putExtra("email",contacts.email)
