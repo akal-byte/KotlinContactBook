@@ -12,7 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ContactsApp">
-        <activity android:name=".UI.ContactDetailsActivity"></activity>
+        <activity
+            android:name=".UI.AddContacts"
+            android:exported="true" />
+        <activity
+            android:name=".UI.ViewContactActivit"
+            android:exported="true" />
+        <activity android:name=".UI.ContactDetailsActivity" />
         <activity android:name=".UI.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

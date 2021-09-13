@@ -1,34 +1,52 @@
 package com.example.contactsapp.UI
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.contactsapp.Models.Contacts
 import com.example.contactsapp.ContactsAdapter
 import com.example.contactsapp.R
+import com.example.contactsapp.ViewModel.ContactsViewModel
+import com.example.contactsapp.databinding.ActivityAddContactsBinding
+import com.example.contactsapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var rvcontacts:RecyclerView
+    lateinit var binding: ActivityMainBinding
+    val contactViewModel: ContactsViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        displayContacts()
+        binding= ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        contactViewModel.getContactById(2)
     }
 
-    fun displayContacts(){
-        var contactsList= listOf<Contacts>(
-            Contacts("Frederick Mutinda","0745678908","mutindafred@gmail.com","https://cdn.pixabay.com/photo/2015/08/05/04/25/people-875617__340.jpg"),
-            Contacts("Michael   Okoth","07348908","okothmichael@gmail.com","https://cdn.pixabay.com/photo/2015/03/26/09/41/tie-690084__340.jpg"),
-            Contacts("Fretty Pumzi","075678908","pumzifret98@gmail.com","https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849825__340.jpg"),
-            Contacts("Patricia Musikali","07345687778","musikali980@gmail.com","https://cdn.pixabay.com/photo/2017/07/31/21/04/people-2561053__340.jpg")
-        )
-rvcontacts=findViewById(R.id.rvcontacts)
+    fun displayContacts(contactsList: List<Contacts>){
+     binding.rvcontacts
     var contactsAdapter= ContactsAdapter(contactsList,baseContext)
-    rvcontacts.apply {
+    binding.rvcontacts.apply {
         layoutManager=LinearLayoutManager(baseContext)
-        rvcontacts.adapter=contactsAdapter
+      binding.rvcontacts.adapter=contactsAdapter
+    }
+    }
+    override fun onResume() {
+        super.onResume()
+        contactViewModel.contactLiveData.observe(this, {contact->
+            if (contact!=null){
+                Toast.makeText(this, contact.name, Toast.LENGTH_LONG).
+                show()
+            }
+        })
+        binding.fabaddcontact.setOnClickListener {
+            startActivity(Intent(this,AddContacts::class.java))
+        }
+
     }
 
     }
-}
+
+

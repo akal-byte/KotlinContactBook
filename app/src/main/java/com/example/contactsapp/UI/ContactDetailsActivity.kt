@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.cardview.widget.CardView
 import com.example.contactsapp.R
+import com.example.contactsapp.ViewModel.ContactsViewModel
 import com.squareup.picasso.Picasso
 
 class ContactDetailsActivity : AppCompatActivity() {
@@ -14,7 +16,6 @@ class ContactDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_details)
-
         var name=intent.getStringExtra("name")
         var phoneNumber=intent.getStringExtra("phone")
         var email=intent.getStringExtra("email")
@@ -39,5 +40,7 @@ class ContactDetailsActivity : AppCompatActivity() {
     }
 
 
+    }
 
-}
+
+

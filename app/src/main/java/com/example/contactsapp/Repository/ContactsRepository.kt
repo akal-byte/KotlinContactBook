@@ -14,12 +14,13 @@ class ContactsRepository {
         withContext(Dispatchers.IO){
             database.contactsDao().insertContact(contacts)
         }
-
+//        uses with context and dispatchers with io to switch
     }
     fun getAllContacts():LiveData<List<Contacts>>{
         return  database.contactsDao().getAllContacts()
     }
-
-
+    fun getContactById(contactId: Int): LiveData<Contacts> {
+        return database.contactsDao().getContactById(contactId)
+    }
 
 }
