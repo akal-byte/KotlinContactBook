@@ -12,7 +12,7 @@ interface NotesDao {
         fun insertNotes(note: Note)
 
         @Query("SELECT* FROM Note")
-        fun getAllNotes(): LiveData<List<Note>>
+         fun getAllNotes(): LiveData<List<Note>>
 
         @Query("SELECT* FROM Note WHERE noteId= :noteId")
         fun getContactById(noteId: Int): LiveData<Note>
